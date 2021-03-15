@@ -2,10 +2,10 @@ import UIKit
 
 class Coordinator<T: UIResponder>: Hashable {
     
-    private (set) var container: T
-    
-    private let hash = UUID.init().hashValue
-    private var childs: Set<AnyHashable> = []
+    let hash = UUID.init().hashValue
+
+    private(set) var container: T
+    private(set) var childs: Set<AnyHashable> = []
     
     init(container: T) {
         self.container = container

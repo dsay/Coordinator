@@ -8,7 +8,7 @@ class TabBarCoordinator: Coordinator<UITabBarController> {
         }, completion: completion)
     }
     
-    func select(index: Int, completion: Completion?) {
+    func select(index: Int, completion: Completion? = nil) {
         wrapAnimation(in: {
             self.container.selectedIndex = index
         }, completion: completion)

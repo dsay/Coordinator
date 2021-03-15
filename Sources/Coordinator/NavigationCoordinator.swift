@@ -69,17 +69,6 @@ class NavigationCoordinator: Coordinator<UINavigationController> {
         }, completion: completion)
     }
     
-    func present(_ viewController: UIViewController, animated: Bool = true, completion: Completion? = nil) {
-        container.present(viewController, animated: animated, completion: completion)
-    }
-    
-    func dismiss(animated: Bool = true, completion: Completion? = nil) {
-        guard container.presentedViewController != nil else {
-            return
-        }
-        container.dismiss(animated: animated, completion: completion)
-    }
-    
     func replaceViewControllers(after: UIViewController,
                                 with viewControllers: [UIViewController],
                                 animated: Bool = true,
@@ -90,7 +79,7 @@ class NavigationCoordinator: Coordinator<UINavigationController> {
             completion?()
             return
         }
-        var proceed = false
+        var proceed = true
         while proceed {
             if let current = stack.last {
                 if current == viewController {
