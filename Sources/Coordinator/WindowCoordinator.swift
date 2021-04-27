@@ -1,8 +1,8 @@
 import UIKit
 
-class WindowCoordinator: Coordinator<UIWindow> {
+open class WindowCoordinator: Coordinator<UIWindow> {
     
-    func setRoot(viewControler: UIViewController, animated: Bool = false) {
+    public func setRoot(viewControler: UIViewController, animated: Bool = false) {
         if let snapshot = container.rootViewController?.view.snapshotView(afterScreenUpdates: true), animated {
             viewControler.view.addSubview(snapshot)
             container.rootViewController = viewControler

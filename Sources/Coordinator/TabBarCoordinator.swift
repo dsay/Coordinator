@@ -1,17 +1,16 @@
 import UIKit
 
-class TabBarCoordinator: Coordinator<UITabBarController> {
+open class TabBarCoordinator: Coordinator<UITabBarController> {
     
-    func set(_ viewControllers: [UIViewController], animated: Bool = true, completion: Completion? = nil) {
+    public func set(_ viewControllers: [UIViewController], animated: Bool = true, completion: Completion? = nil) {
         wrapAnimation(in: {
             self.container.setViewControllers(viewControllers, animated: animated)
         }, completion: completion)
     }
     
-    func select(index: Int, completion: Completion? = nil) {
+    public func select(index: Int, completion: Completion? = nil) {
         wrapAnimation(in: {
             self.container.selectedIndex = index
         }, completion: completion)
     }
-    
 }
