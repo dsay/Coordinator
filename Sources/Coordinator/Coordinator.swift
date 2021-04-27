@@ -4,15 +4,15 @@ open class Coordinator<T: UIResponder> {
     
     let hash = UUID.init().hashValue
     
-    private(set) var container: T
-    private(set) var childs: Set<AnyHashable> = []
+    public var container: T
+    public var childs: Set<AnyHashable> = []
     
     public init(container: T) {
         self.container = container
         self.start()
     }
     
-    public func start() {
+    open func start() {
         
     }
     
