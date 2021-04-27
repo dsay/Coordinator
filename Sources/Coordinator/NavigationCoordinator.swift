@@ -50,6 +50,17 @@ open class NavigationCoordinator: Coordinator<UINavigationController> {
         }, completion: completion)
     }
     
+    public func present(_ viewController: UIViewController, animated: Bool = true, completion: Completion? = nil) {
+        container.present(viewController, animated: animated, completion: completion)
+    }
+    
+    public func dismiss(animated: Bool = true, completion: Completion? = nil) {
+        guard container.presentedViewController != nil else {
+            return
+        }
+        container.dismiss(animated: animated, completion: completion)
+    }
+    
     public func add(_ viewControllers: [UIViewController],
                     animated: Bool = true,
                     completion: Completion? = nil)
