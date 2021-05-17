@@ -21,4 +21,10 @@ open class WindowCoordinator: Coordinator<UIWindow> {
         }
     }
     
+    public func setRoot(coordinator: Coordinator<UIViewController>, animated: Bool = false) {
+        removeAllChilds()
+        addChild(coordinator)
+        
+        setRoot(viewControler: coordinator.container, animated: animated)
+    }
 }
