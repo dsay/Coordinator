@@ -24,10 +24,6 @@ public extension Coordinator {
         self.start()
     }
     
-    func start() {
-        
-    }
-    
     func addChild(_ child: AnyHashable) {
         children.insert(child)
     }

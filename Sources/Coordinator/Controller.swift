@@ -32,8 +32,4 @@ public extension CoordinatorController {
         self.input = input
         self.output = output
     }
-    
-    func configure() {
-        
-    }
 }
