@@ -2,11 +2,15 @@ import UIKit
 
 open class NavigationCoordinator: Coordinator {
     
-    public var id: String = UUID().uuidString
-    public var children: Set<AnyHashable> = []
+    public var id: String! = UUID().uuidString
+    public var children: Set<AnyHashable>! = []
     public var container: UINavigationController!
     
     required public init() {
+        
+    }
+    
+    public func start() {
         
     }
     

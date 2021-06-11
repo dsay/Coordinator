@@ -4,9 +4,9 @@ public protocol Coordinator: AnyObject, Hashable {
     
     associatedtype Сontainer: UIResponder
     
-    var id: String { get }
+    var id: String! { get }
     var container: Сontainer! { get set }
-    var children: Set<AnyHashable> { get set }
+    var children: Set<AnyHashable>! { get set }
     
     init()
     init(with container: Сontainer)

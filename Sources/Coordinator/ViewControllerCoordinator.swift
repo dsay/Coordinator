@@ -2,11 +2,15 @@ import UIKit
 
 open class ViewControllerCoordinator: Coordinator {
     
-    public var id: String = UUID().uuidString
-    public var children: Set<AnyHashable> = []
+    public var id: String! = UUID().uuidString
+    public var children: Set<AnyHashable>! = []
     public var container: UIViewController!
     
     required public init() {
+        
+    }
+    
+    public func start() {
         
     }
     
