@@ -7,7 +7,7 @@ final class WindowCoordinatorTests: XCTestCase {
 
     override func setUp() {
         super.setUp()
-        coordinator = WindowCoordinator(container: UIWindow())
+        coordinator = WindowCoordinator(with: UIWindow())
     }
     
     func testInit() {
@@ -15,7 +15,7 @@ final class WindowCoordinatorTests: XCTestCase {
     }
     
     func testSet() {
-        coordinator.setRoot(viewControler: UIViewController())
+        coordinator.setRoot(viewControler: UINavigationController())
         XCTAssertNotNil(coordinator.container.rootViewController)
     }
     

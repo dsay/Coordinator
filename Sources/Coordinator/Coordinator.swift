@@ -1,39 +1,46 @@
 import UIKit
 
-open class Coordinator<T: UIResponder> {
+public protocol Coordinator: AnyObject, Hashable {
     
-    let hash = UUID.init().hashValue
+    associatedtype Сontainer: UIResponder
     
-    public var container: T
-    public var childs: Set<AnyHashable> = []
+    var id: String { get }
+    var container: Сontainer! { get set }
+    var children: Set<AnyHashable> { get set }
     
-    public init(container: T) {
+    init()
+    init(with container: Сontainer)
+
+    func start()
+}
+
+public extension Coordinator {
+    
+    typealias Completion = () -> Void
+    
+    init(with container: Сontainer) {
+        self.init()
         self.container = container
         self.start()
     }
     
-    open func start() {
+    func start() {
         
     }
     
-    public func addChild(_ child: AnyHashable) {
-        childs.insert(child)
+    func addChild(_ child: AnyHashable) {
+        children.insert(child)
     }
     
-    public func removeChild(_ child: AnyHashable) {
-        childs.remove(child)
+    func removeChild(_ child: AnyHashable) {
+        children.remove(child)
     }
     
-    public func removeAllChilds() {
-        childs.removeAll()
+    func removeChildren() {
+        children.removeAll()
     }
-}
-
-extension Coordinator {
     
-    public typealias Completion = () -> Void
-    
-    public func wrapAnimation(in action: Completion, completion: Completion? = nil) {
+    func wrapAnimation(in action: Completion, completion: Completion? = nil) {
         CATransaction.begin()
         CATransaction.setCompletionBlock(completion)
         action()
@@ -41,13 +48,13 @@ extension Coordinator {
     }
 }
 
-extension Coordinator: Hashable {
-
-    public static func == (lhs: Coordinator<T>, rhs: Coordinator<T>) -> Bool {
-        lhs.hash == rhs.hash
+public extension Coordinator where Сontainer: UIResponder {
+    
+    static func == (lhs: Self, rhs: Self) -> Bool {
+        lhs.id == rhs.id
     }
     
-    public func hash(into hasher: inout Hasher) {
-        hasher.combine(hash)
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
     }
 }

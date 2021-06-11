@@ -11,7 +11,7 @@ final class NavigationCoordinatorTests: XCTestCase {
 
     override func setUp() {
         super.setUp()
-        coordinator = NavigationCoordinator(container: UINavigationController())
+        coordinator = NavigationCoordinator(with: UINavigationController())
     }
     
     func testNavigationInit() {

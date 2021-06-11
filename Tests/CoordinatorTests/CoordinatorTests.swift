@@ -1,13 +1,25 @@
 import XCTest
 @testable import Coordinator
 
+class TestCoordinator: Coordinator {
+    
+    public var id: String = UUID().uuidString
+    public var children: Set<AnyHashable> = []
+    public var container: UIView!
+    
+    required public init() {
+        
+    }
+    
+}
+
 final class CoordinatorTests: XCTestCase {
 
-    var coordinator: Coordinator<UIView>!
+    var coordinator: TestCoordinator!
 
     override func setUp() {
         super.setUp()
-        coordinator = Coordinator(container: UIView())
+        coordinator = TestCoordinator(with: UIView())
     }
     
     func testCoordinatorInit() {
@@ -15,31 +27,31 @@ final class CoordinatorTests: XCTestCase {
     }
     
     func testCoordinatorAddChild() {
-        let child = Coordinator(container: UIView())
+        let child = TestCoordinator(with: UIView())
         
         coordinator.addChild(child)
         
-        XCTAssertEqual(coordinator.childs.count, 1)
+        XCTAssertEqual(coordinator.children.count, 1)
     }
     
     func testCoordinatorRemoveChild() {
-        let child = Coordinator(container: UIView())
+        let child = TestCoordinator(with: UIView())
 
         coordinator.addChild(child)
-        coordinator.removeAllChilds()
+        coordinator.removeChildren()
 
-        XCTAssertEqual(coordinator.childs.count, 0)
+        XCTAssertEqual(coordinator.children.count, 0)
     }
     
     func testCoordinatorRemoveAllChild() {
-        let child = Coordinator(container: UIView())
-        let child1 = Coordinator(container: UIView())
+        let child = TestCoordinator(with: UIView())
+        let child1 = TestCoordinator(with: UIView())
 
         coordinator.addChild(child)
         coordinator.addChild(child1)
-        coordinator.removeAllChilds()
+        coordinator.removeChildren()
 
-        XCTAssertEqual(coordinator.childs.count, 0)
+        XCTAssertEqual(coordinator.children.count, 0)
     }
     
     static var allTests = [

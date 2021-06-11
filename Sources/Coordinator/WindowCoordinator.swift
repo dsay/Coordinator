@@ -1,6 +1,14 @@
 import UIKit
 
-open class WindowCoordinator: Coordinator<UIWindow> {
+open class WindowCoordinator: Coordinator {
+    
+    public var id: String = UUID().uuidString
+    public var children: Set<AnyHashable> = []
+    public var container: UIWindow!
+    
+    required public init() {
+        
+    }
     
     public func setRoot(viewControler: UIViewController, animated: Bool = false) {
         if let snapshot = container.rootViewController?.view.snapshotView(afterScreenUpdates: true), animated {
@@ -21,22 +29,8 @@ open class WindowCoordinator: Coordinator<UIWindow> {
         }
     }
     
-    public func setRoot(_ coordinator: Coordinator<UIViewController>, animated: Bool = true) {
-        removeAllChilds()
-        addChild(coordinator)
-        
-        setRoot(viewControler: coordinator.container, animated: animated)
-    }
-    
-    public func setRoot(_ coordinator: Coordinator<UINavigationController>, animated: Bool = true) {
-        removeAllChilds()
-        addChild(coordinator)
-        
-        setRoot(viewControler: coordinator.container, animated: animated)
-    }
-    
-    public func setRoot(_ coordinator: Coordinator<UITabBarController>, animated: Bool = true) {
-        removeAllChilds()
+    public func setRoot<C: Coordinator>(_ coordinator: C, animated: Bool = true) where C.Сontainer == UIViewController {
+        removeChildren()
         addChild(coordinator)
         
         setRoot(viewControler: coordinator.container, animated: animated)

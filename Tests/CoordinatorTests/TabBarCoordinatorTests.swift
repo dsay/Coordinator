@@ -7,7 +7,7 @@ final class TabBarCoordinatorTests: XCTestCase {
 
     override func setUp() {
         super.setUp()
-        coordinator = TabBarCoordinator(container: UITabBarController())
+        coordinator = TabBarCoordinator(with: UITabBarController())
     }
     
     func testInit() {

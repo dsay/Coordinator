@@ -1,6 +1,14 @@
 import UIKit
 
-open class TabBarCoordinator: Coordinator<UITabBarController> {
+open class TabBarCoordinator: Coordinator {
+    
+    public var id: String = UUID().uuidString
+    public var children: Set<AnyHashable> = []
+    public var container: UITabBarController!
+    
+    required public init() {
+        
+    }
     
     public func set(_ viewControllers: [UIViewController], animated: Bool = true, completion: Completion? = nil) {
         wrapAnimation(in: {

@@ -7,7 +7,7 @@ final class ViewControllerCoordinatorTests: XCTestCase {
 
     override func setUp() {
         super.setUp()
-        coordinator = ViewControllerCoordinator(container: UIViewController())
+        coordinator = ViewControllerCoordinator(with: UIViewController())
     }
     
     func testInit() {
