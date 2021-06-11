@@ -35,4 +35,18 @@ open class WindowCoordinator: Coordinator {
         
         setRoot(viewControler: coordinator.container, animated: animated)
     }
+    
+    public func setRoot<C: Coordinator>(_ coordinator: C, animated: Bool = true) where C.Сontainer == UINavigationController {
+        removeChildren()
+        addChild(coordinator)
+        
+        setRoot(viewControler: coordinator.container, animated: animated)
+    }
+    
+    public func setRoot<C: Coordinator>(_ coordinator: C, animated: Bool = true) where C.Сontainer == UITabBarController {
+        removeChildren()
+        addChild(coordinator)
+        
+        setRoot(viewControler: coordinator.container, animated: animated)
+    }
 }

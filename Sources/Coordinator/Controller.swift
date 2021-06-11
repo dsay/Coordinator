@@ -9,18 +9,19 @@ public protocol CoordinatorController {
     associatedtype Input
     associatedtype Output
     associatedtype Dependencies
+    associatedtype Route = CoordinatorRoute
 
-    var route: ((CoordinatorRoute) -> Void)? { get set }
+    var route: ((Route) -> Void)? { get set }
     
-    var input: Input { get set }
+    var input: Input! { get set }
     var output: Output? { get set }
      
-    var dependencies: Dependencies { get set }
+    var dependencies: Dependencies! { get set }
     
     init()
     init(with dependencies: Dependencies, _ input: Input, _ output: Output?)
     
-    func start()
+    func configure()
 }
 
 public extension CoordinatorController {
@@ -32,7 +33,7 @@ public extension CoordinatorController {
         self.output = output
     }
     
-    func start() {
+    func configure() {
         
     }
 }
