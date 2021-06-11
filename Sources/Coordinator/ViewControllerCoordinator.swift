@@ -10,7 +10,7 @@ open class ViewControllerCoordinator: Coordinator {
         
     }
     
-    public func start() {
+    open func start() {
         
     }
     

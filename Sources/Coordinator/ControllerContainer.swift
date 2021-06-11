@@ -17,8 +17,4 @@ public extension ControllerContainer {
         self.controller = controller
         self.start()
     }
-    
-    func start() {
-    
-    }
 }

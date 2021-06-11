@@ -2,7 +2,7 @@ import XCTest
 @testable import Coordinator
 
 class TestCoordinator: Coordinator {
-    
+
     public var id: String! = UUID().uuidString
     public var children: Set<AnyHashable>! = []
     public var container: UIView!
@@ -11,6 +11,9 @@ class TestCoordinator: Coordinator {
         
     }
     
+    func start() {
+        
+    }
 }
 
 final class CoordinatorTests: XCTestCase {

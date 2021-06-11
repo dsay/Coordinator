@@ -10,7 +10,7 @@ open class TabBarCoordinator: Coordinator {
         
     }
     
-    public func start() {
+    open func start() {
         
     }
     

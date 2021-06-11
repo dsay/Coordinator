@@ -10,7 +10,7 @@ open class WindowCoordinator: Coordinator {
         
     }
     
-    public func start() {
+    open func start() {
         
     }
     
