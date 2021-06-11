@@ -12,7 +12,9 @@ public protocol ControllerContainer: Coordinator {
 public extension ControllerContainer {
         
     init(with container: Сontainer, _ controller: Controller) {
-        self.init(with: container)
+        self.init()
+        self.container = container
         self.controller = controller
+        self.start()
     }
 }
