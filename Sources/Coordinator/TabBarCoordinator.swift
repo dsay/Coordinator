@@ -14,6 +14,20 @@ open class TabBarCoordinator: Coordinator {
         
     }
     
+    public func set<T: Coordinator>(_ coordinators: [T], animated: Bool = true, completion: Completion? = nil) where T.Сontainer: UIViewController {
+        coordinators.forEach { coordinator in
+            addChild(coordinator)
+        }
+        set(coordinators.compactMap { $0.container }, animated: animated, completion: completion)
+    }
+    
+    public func set<T: Coordinator>(_ coordinators: [T], animated: Bool = true, completion: Completion? = nil) where T.Сontainer: UINavigationController {
+        coordinators.forEach { coordinator in
+            addChild(coordinator)
+        }
+        set(coordinators.compactMap { $0.container }, animated: animated, completion: completion)
+    }
+    
     public func set(_ viewControllers: [UIViewController], animated: Bool = true, completion: Completion? = nil) {
         wrapAnimation(in: {
             self.container.setViewControllers(viewControllers, animated: animated)
