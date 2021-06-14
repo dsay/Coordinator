@@ -2,7 +2,7 @@ import SwiftUI
 
 public extension ViewControllerCoordinator {
     
-    func add(_ child: AnyView, frame: CGRect? = nil) {
+    func add<V: SwiftUI.View>(_ child: V, frame: CGRect? = nil) {
         let childVC = child.toViewController
         container.addChild(childVC)
         if let frame = frame {
@@ -12,7 +12,7 @@ public extension ViewControllerCoordinator {
         childVC.didMove(toParent: container)
     }
 
-    func present(_ view: AnyView, animated: Bool = true, completion: Completion? = nil) {
+    func present<V: SwiftUI.View>(_ view: V, animated: Bool = true, completion: Completion? = nil) {
         present(view.toViewController, animated: animated, completion: completion)
     }
 }
