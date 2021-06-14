@@ -2,8 +2,8 @@ import UIKit
 
 open class TabBarCoordinator: Coordinator {
     
-    public var id: String! = UUID().uuidString
-    public var children: Set<AnyHashable>! = []
+    public var id: String!
+    public var children: Set<AnyHashable>! 
     public var container: UITabBarController!
     
     required public init() {

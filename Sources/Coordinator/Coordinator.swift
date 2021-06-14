@@ -4,7 +4,7 @@ public protocol Coordinator: AnyObject, Hashable {
     
     associatedtype Сontainer: UIResponder
     
-    var id: String! { get }
+    var id: String! { get set }
     var container: Сontainer! { get set }
     var children: Set<AnyHashable>! { get set }
     
@@ -20,6 +20,8 @@ public extension Coordinator {
     
     init(with container: Сontainer) {
         self.init()
+        self.id = UUID().uuidString
+        self.children = []
         self.container = container
         self.start()
     }
